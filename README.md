@@ -14,10 +14,6 @@ make
 ```
 make run
 ```
-To see a sample run:
-```
-make run < input.txt
-```
 
 ## Test
 ```
