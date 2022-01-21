@@ -8,9 +8,12 @@ bool promptForMove(Game g, int &row, int &column);
 void runGame(std::string playerX, std::string playerY);
 
 void promptForName(char letter, std::string &name) {
+    std::string buffer;
     std::cout<<"Player "<<letter<<", what is your name? \n";
-    if (std::cin) {
-        std::getline(std::cin, name);
+
+    std::getline(std::cin, buffer);
+    if (not buffer.empty()) {
+        name = buffer;
     }
 }
 bool promptForMove(Game g, int &row, int &column) {
