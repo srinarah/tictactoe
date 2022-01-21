@@ -27,7 +27,7 @@ test-eof-mid-game:
 test-eof-after-one-name:
 	echo
 	echo "Testing scenario with EOF after player x's name"
-	./tictactoe.out < test/eof_after_one_name.txt | grep --color "Player Y"
+	./tictactoe.out < test/eof_after_one_name.txt | grep --color "Player O"
 
 test-immediate-eof:
 	echo

@@ -2,7 +2,7 @@
 #include <string>
 
 const int xxxx = *((int*)"xxxx");
-const int yyyy = *((int*)"yyyy");
+const int oooo = *((int*)"oooo");
 
 class Game {
     private:
@@ -12,12 +12,12 @@ class Game {
         char outcome;
         bool xToMove;
         std::string playerX;
-        std::string playerY;
+        std::string playerO;
     public:
         Game();
         std::string getPlayerToMove();
         void setPlayerX(std::string name);
-        void setPlayerY(std::string name);
+        void setPlayerO(std::string name);
         void put(int row, int column);
         char getOutcome();
         void print();
@@ -31,27 +31,27 @@ Game::Game() {
     outcome = '-';
     xToMove = true;
     playerX = "Player X";
-    playerY = "Player Y";
+    playerO = "Player O";
 }
 std::string Game::getPlayerToMove() {
-    return xToMove ? playerX : playerY;
+    return xToMove ? playerX : playerO;
 }
 void Game::setPlayerX(std::string name) {
     playerX = name;
 }
-void Game::setPlayerY(std::string name) {
-    playerY = name;
+void Game::setPlayerO(std::string name) {
+    playerO = name;
 }
 void Game::put(int row, int column) {
     if (outcome == '-' and row >= 0 and row < 4 and column >= 0 and column < 4) {
         if (((char*)(&(rows[row])))[column] == '-') {
             ((char*)(&(rows[row])))[column] = ((char*)(&(columns[column])))[row]
-                                            = xToMove ? 'x' : 'y';
+                                            = xToMove ? 'x' : 'o';
             if (row == column) {
-                ((char*)&diag_00_33)[row] = xToMove ? 'x' : 'y';
+                ((char*)&diag_00_33)[row] = xToMove ? 'x' : 'o';
             }
             if (row + column == 3) {
-                ((char*)&diag_03_30)[row] = xToMove ? 'x' : 'y';
+                ((char*)&diag_03_30)[row] = xToMove ? 'x' : 'o';
             }
             xToMove = not xToMove;
             vacant--;
@@ -62,8 +62,8 @@ void Game::put(int row, int column) {
                     outcome = 'x';
                     return;
                 }
-                if (rows[i] == yyyy or columns[i] == yyyy) {
-                    outcome = 'y';
+                if (rows[i] == oooo or columns[i] == oooo) {
+                    outcome = 'o';
                     return;
                 }
             }
@@ -71,8 +71,8 @@ void Game::put(int row, int column) {
                 outcome = 'x';
                 return;
             }
-            if (diag_00_33 == yyyy or diag_03_30 == yyyy) {
-                outcome = 'y';
+            if (diag_00_33 == oooo or diag_03_30 == oooo) {
+                outcome = 'o';
                 return;
             }
             if (vacant == 0) {
@@ -88,7 +88,7 @@ char Game::getOutcome() {
     return outcome;
 }
 void Game::print() {
-    std::cout<<"\nGame between "<<playerX<<" and "<<playerY<<":\n";
+    std::cout<<"\nGame between "<<playerX<<" and "<<playerO<<":\n";
     for (int row = 0; row < 4; row++) {
         std::cout<<'\t';
         for (int i = 0; i < 4; i++) {

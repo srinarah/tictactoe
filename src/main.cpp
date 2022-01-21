@@ -3,12 +3,12 @@
 
 int main() {
     std::string playerX = "Player X";
-    std::string playerY = "Player Y";
+    std::string playerO = "Player O";
     
     promptForName('x', playerX);
-    promptForName('y', playerY);
+    promptForName('o', playerO);
     
-    runGame(playerX, playerY);
+    runGame(playerX, playerO);
 
     return 0;
 }

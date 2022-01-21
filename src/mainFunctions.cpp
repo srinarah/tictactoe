@@ -5,7 +5,7 @@
 
 void promptForName(char letter, std::string &name);
 bool promptForMove(Game g, int &row, int &column);
-void runGame(std::string playerX, std::string playerY);
+void runGame(std::string playerX, std::string playerO);
 
 void promptForName(char letter, std::string &name) {
     std::string buffer;
@@ -31,13 +31,13 @@ bool promptForMove(Game g, int &row, int &column) {
     }
     return false;
 }
-void runGame(std::string playerX, std::string playerY) {
+void runGame(std::string playerX, std::string playerO) {
     Game g;
     char outcome;
     int row, column;
 
     g.setPlayerX(playerX);
-    g.setPlayerY(playerY);
+    g.setPlayerO(playerO);
 
     while ((outcome = g.getOutcome()) == '-') {
         g.print();
@@ -59,8 +59,8 @@ void runGame(std::string playerX, std::string playerY) {
         case 'x':
             std::cout<<playerX<<" wins!\n";
             break;
-        case 'y':
-            std::cout<<playerY<<" wins!\n";
+        case 'o':
+            std::cout<<playerO<<" wins!\n";
             break;
     }
 }
