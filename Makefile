@@ -1,10 +1,10 @@
 .PHONY: build
 
 build:
-	g++ -o tictactoe src/main.cpp
+	g++ -o tictactoe.out src/main.cpp
 
 run:
-	./tictactoe
+	./tictactoe.out
 
 clean:
-	rm -f ./tictactoe
+	rm -f ./tictactoe.out
